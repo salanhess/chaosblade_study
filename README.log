@@ -1,0 +1,33 @@
+# chaosblade_study
+## 【chaosblade学习】
+
+1. 安装
+https://github.com/chaosblade-io/chaosblade/releases
+
+2. 执行 
+https://chaosblade-io.gitbook.io/chaosblade-help-zh-cn
+# ln -sf /export/baihao/chaosblade-1.3.0/blade /usr/bin/blade^C
+blade create cpu load --cpu-count 1
+{"code":200,"success":true,"result":"02c8b09261693f34"}
+# blade status --type create
+blade destroy 02c8b09261693f34
+# blade status 02c8b09261693f34
+
+
+## [编译chaos arm]
+
+1. 下载 https://golang.google.cn/dl/
+2. 安装http://c.biancheng.net/view/3993.html
+3. 设置GOPROXY=https://goproxy.cn
+4. make clean
+5. 修改makefile docker run相关 --env GOPROXY=https://goproxy.cn
+避免 go Get https://proxy.golang.org/github.com/chaosblade-io/chaosblade-exec-docker/@v/v1.3.0.mod: dial tcp 216.58.200.241:443: i/o timeout
+6. make clean && make build_linux_arm
+make build_with_linux_arm ARGS="cli os" (pre_build build_linux_arm_with_arg)
+(build/image/blade/chaosblade-1.3.0)
+7.Netissue: git clone -b v1.3.0 https://github.com/chaosblade-io/chaosblade-exec-os.git target/cache/chaosblade-exec-os
+Cloning into 'target/cache/chaosblade-exec-os'...
+fatal: unable to access 'https://github.com/chaosblade-io/chaosblade-exec-os.git/': gnutls_handshake() failed: Error in the pull function.
+Makefile:118: recipe for target 'os' failed
+
+
